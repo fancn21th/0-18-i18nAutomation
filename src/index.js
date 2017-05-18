@@ -1,15 +1,10 @@
 import path from 'path'
-import fs from 'fs'
+import jsonfile from 'jsonfile'
 
 class JsonReader {
   constructor(filePath) {
-    this.jsonKeys = []
-    this.json = JSON.parse(
-      fs.readFileSync(
-        path.resolve(filePath),
-        'utf8'))
+    this.json = jsonfile.readFileSync(path.resolve(filePath))
   }
-
   getJson() {
     return this.json
   }
