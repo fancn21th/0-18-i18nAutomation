@@ -1,8 +1,8 @@
 import i18next from 'i18next'
 
-const getUpdatedTime = () => i18next.t('product:Updated Time')
+const get<%= resKey %> = () => i18next.t('<%= resNS %>:<%= resVal %>')
 
 export default {
-  getUpdatedTime,
+  get<%= resKey %>,
 }
 
