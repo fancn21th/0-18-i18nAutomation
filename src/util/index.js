@@ -3,9 +3,9 @@ import path from 'path'
 
 const rootPath = process.cwd()
 
-const readFile = (filename) => {
+export const readFile = (filename) => {
   const filePath = path.join(rootPath, filename)
-  console.log(`file to read is at ${filePath}`)
+  console.log(`reading a file at ${filePath}`)
   return fs.readFileSync(filePath, 'utf8')
 }
 

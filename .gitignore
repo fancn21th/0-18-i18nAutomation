@@ -1,3 +1,4 @@
 # Webstrom File
 .idea/
 /node_modules/
+/output/

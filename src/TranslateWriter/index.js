@@ -1,5 +1,6 @@
 import ejs from 'ejs'
-import util from '../util'
+import { readFile } from '../util'
+import { outputFileSync } from 'fs-extra'
 
 class TranslateWriter {
   constructor(args) {
@@ -9,13 +10,17 @@ class TranslateWriter {
   }
   renderTemplate() {
     let renderContent
-    const template = util.readFile(this.templatePath, 'utf8')
+    const template = readFile(this.templatePath, 'utf8')
     try {
       renderContent = ejs.render(template, this.templateVariables)
     } catch (err) {
       console.error(err)
     }
     return renderContent
+  }
+  writeFile() {
+    const fileContent = this.renderTemplate()
+    outputFileSync(this.destPath, fileContent)
   }
 }
 export default TranslateWriter

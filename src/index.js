@@ -2,14 +2,17 @@ import TranslateWriter from './TranslateWriter'
 
 const args = {
   templateVariables: {
-    resKey: 'ResKey',
-    resNS: 'ResNS',
-    resVal: 'ResVal',
+    resKeyCollection: [
+      'Key1',
+      'Key2',
+      'Key3Key4',
+    ],
+    resNS: 'simple',
   },
   templatePath: 'templates/translateHelper.js',
-  destPath: 'output',
+  destPath: 'output/transHelper.js',
 }
 
 const translateWriter = new TranslateWriter(args)
 
-console.log(translateWriter.renderTemplate(args))
+translateWriter.writeFile()
