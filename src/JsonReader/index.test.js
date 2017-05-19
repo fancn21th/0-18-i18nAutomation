@@ -3,7 +3,7 @@ import JsonReader from './index'
 const simpleJSONFilePath = 'resources/simple.json'
 const complexJSONFilePath = 'resources/complex.json'
 
-describe('i18 resource file transformation automation', () => {
+describe('JsonReader Test', () => {
   it('获取 simple.json 里面的一组key value', () => {
     const jsonReader = new JsonReader(simpleJSONFilePath)
     expect(jsonReader.getJson()['Key1 Key2']).toEqual('Value1')

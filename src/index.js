@@ -1,13 +1,15 @@
-import path from 'path'
-import jsonfile from 'jsonfile'
+import TranslateWriter from './TranslateWriter'
 
-class JsonReader {
-  constructor(filePath) {
-    this.json = jsonfile.readFileSync(path.resolve(filePath))
-  }
-  getJson() {
-    return this.json
-  }
+const args = {
+  templateVariables: {
+    resKey: 'ResKey',
+    resNS: 'ResNS',
+    resVal: 'ResVal',
+  },
+  templatePath: 'templates/translateHelper.js',
+  destPath: 'output',
 }
-export default JsonReader
 
+const translateWriter = new TranslateWriter(args)
+
+console.log(translateWriter.renderTemplate(args))
