@@ -37,6 +37,7 @@
   "dependencies": {
     "ejs": "^2.5.6",
     "fs-extra": "^3.0.1",
-    "jsonfile": "^3.0.0"
+    "jsonfile": "^3.0.0",
+    "walk-sync": "^0.3.1"
   }
 }

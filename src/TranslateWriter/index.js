@@ -1,6 +1,6 @@
 import ejs from 'ejs'
-import { readFile } from '../util'
 import { outputFileSync } from 'fs-extra'
+import { readFile } from '../util'
 
 class TranslateWriter {
   constructor(args) {

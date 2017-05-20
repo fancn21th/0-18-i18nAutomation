@@ -1,9 +1,8 @@
-import path from 'path'
 import jsonfile from 'jsonfile'
 
 class JsonReader {
   constructor(filePath) {
-    this.json = jsonfile.readFileSync(path.resolve(filePath))
+    this.json = jsonfile.readFileSync(filePath)
   }
   getJson() {
     return this.json
