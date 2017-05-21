@@ -1,12 +1,13 @@
 import ejs from 'ejs'
 import { outputFileSync } from 'fs-extra'
+import path from 'path'
 import { readFile } from '../util'
 
 class TranslateWriter {
   constructor(args) {
     this.templateVariables = args.templateVariables
     this.templatePath = args.templatePath
-    this.destPath = args.destPath
+    this.targetFolderPath = args.targetFolderPath
   }
   renderTemplate() {
     let renderContent
@@ -20,7 +21,9 @@ class TranslateWriter {
   }
   writeFile() {
     const fileContent = this.renderTemplate()
-    outputFileSync(this.destPath, fileContent)
+    const fileName = `${this.templateVariables.resNS}.js`
+    const filePath = path.resolve(this.targetFolderPath, fileName)
+    outputFileSync(filePath, fileContent)
   }
 }
 export default TranslateWriter
