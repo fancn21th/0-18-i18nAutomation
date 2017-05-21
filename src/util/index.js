@@ -9,6 +9,14 @@ export const readFile = (filename) => {
   return fs.readFileSync(filePath, 'utf8')
 }
 
+const _pipe = (f, g) => (...args) => g(f(...args))
+
+export const pipe = (...fns) => fns.reduce(_pipe)
+
+export const removeNonAlphanumericChars = key => key.replace(/[^A-Za-z0-9_ ]/g, ' ')
+
+export const removeDuplicateSpace = key => key.replace(/\s{2,}/g, ' ')
+
 export const shortenKey = (key) => {
   const separtor = ' '
   const splitedArray = key.split(separtor)
@@ -18,12 +26,20 @@ export const shortenKey = (key) => {
   return key
 }
 
-const convert2HumpsKey = preProcess => key => humps.pascalize(preProcess(key), { separator: '' })
+const humpsKey = key => humps.pascalize(key, { separator: '' })
 
-export const convertKeyCollection = keyCollection => keyCollection.map(key => ({
-  humpsKey: convert2HumpsKey(shortenKey)(key),
-  originalKey: key,
-}))
+export const convertKeyCollection = keyCollection => keyCollection.map((key) => {
+  const pipeline = pipe(
+    removeNonAlphanumericChars,
+    removeDuplicateSpace,
+    shortenKey,
+    humpsKey,
+  )
+  return {
+    humpsKey: pipeline(key),
+    originalKey: key,
+  }
+})
 
 export default {
   readFile,
