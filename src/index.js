@@ -6,4 +6,5 @@ const jsonTranslateHelper =
     'templates/translateHelper.js',
     'output',
   )
+
 jsonTranslateHelper.translate()
